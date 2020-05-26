@@ -631,9 +631,17 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
     flex-direction: column;
     overflow: hidden;
     margin: 0 0 16px;
-    padding: 0 20px 40px;
-    min-height: 220px;
+    padding: 0 20px 32px;
     border-bottom: 1px solid color(var(--lightgrey) l(+12%));
+    background-size: cover;
+}
+
+.post-card-default {
+    position: relative;
+    flex: 1 1 301px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
     background-size: cover;
 }
 
@@ -789,7 +797,6 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
     flex: 1 1 50%;
     display: flex;
     flex-direction: column;
-    margin: 2px 0 0 6px;
     color: color(var(--midgrey) l(+10%));
     font-size: 1.2rem;
     line-height: 1.4em;
@@ -906,9 +913,7 @@ make sure this only happens on large viewports / desktop-ish devices.
 
 /* Adjust some margins for smaller screens */
 @media (max-width: 1170px) {
-    .post-card {
-        margin-bottom: 5vw;
-    }
+    
 }
 
 @media (max-width: 650px) {
@@ -959,6 +964,13 @@ make sure this only happens on large viewports / desktop-ish devices.
     line-height: 1.4em;
     font-weight: 600;
     text-transform: uppercase;
+}
+
+.post-footer {
+    border-top: 1px solid #e3e9ed;
+    padding-top: 24px;
+    text-align: end;
+    text-decoration: none;
 }
 
 .post-full-meta-date {
@@ -1506,9 +1518,6 @@ Usage (In Ghost editor):
 .post-full-byline {
     display: flex;
     justify-content: space-between;
-    margin: 35px 0 0;
-    padding-top: 15px;
-    border-top: 1px solid color(var(--lightgrey) l(+10%));
 }
 
 .post-full-byline-content {

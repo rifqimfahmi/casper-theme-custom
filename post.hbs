@@ -17,14 +17,6 @@ into the {body} of the default.hbs template --}}
 
             <header class="post-full-header">
 
-                {{#if primary_tag}}
-                <section class="post-full-tags">
-                    {{#primary_tag}}
-                    <a href="{{url}}">{{name}}</a>
-                    {{/primary_tag}}
-                </section>
-                {{/if}}
-
                 <h1 class="post-full-title">{{title}}</h1>
 
                 {{#if custom_excerpt}}
@@ -35,44 +27,7 @@ into the {body} of the default.hbs template --}}
 
                     <section class="post-full-byline-content">
 
-                        <ul class="author-list">
-                            {{#foreach authors}}
-                            <li class="author-list-item">
-
-                                <div class="author-card">
-                                    {{#if profile_image}}
-                                    <img class="author-profile-image" src="{{img_url profile_image size="xs"}}" alt="{{name}}" />
-                                    {{else}}
-                                    <div class="author-profile-image">{{> "icons/avatar"}}</div>
-                                    {{/if}}
-                                    <div class="author-info">
-                                        {{#if bio}}
-                                        <div class="bio">
-                                            <h2>{{name}}</h2>
-                                            <p>{{bio}}</p>
-                                            <p><a href="{{url}}">More posts</a> by {{name}}.</p>
-                                        </div>
-                                        {{else}}
-                                        <h2>{{name}}</h2>
-                                        <p>Read <a href="{{url}}">more posts</a> by this author.</p>
-                                        {{/if}}
-                                    </div>
-                                </div>
-
-                                {{#if profile_image}}
-                                <a href="{{url}}" class="author-avatar">
-                                    <img class="author-profile-image" src="{{img_url profile_image size="xs"}}" alt="{{name}}" />
-                                </a>
-                                {{else}}
-                                <a href="{{url}}" class="author-avatar author-profile-image">{{> "icons/avatar"}}</a>
-                                {{/if}}
-
-                            </li>
-                            {{/foreach}}
-                        </ul>
-
                         <section class="post-full-byline-meta">
-                            <h4 class="author-name">{{authors}}</h4>
                             <div class="byline-meta-content">
                                 <time class="byline-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMM YYYY"}}</time>
                                 <span class="byline-reading-time"><span class="bull">&bull;</span> {{reading_time}}</span>
@@ -108,6 +63,17 @@ into the {body} of the default.hbs template --}}
                     {{content}}
                 </div>
             </section>
+
+            <footer>
+                <div>
+                    <section class="post-full-byline-meta" style="text-align: end; margin-bottom: 6px"> 
+                        <span>Author: </span><h4 class="author-name" style="display: inline">{{authors}}</h4>
+                    </section>
+                </div>
+                <div class="post-footer">
+                    {{tags}}
+                </div>
+            </footer>
 
             {{!-- Email subscribe form at the bottom of the page --}}
             {{#if @labs.members}}
@@ -160,14 +126,18 @@ into the {body} of the default.hbs template --}}
             {{/get}}
             {{/if}}
 
-            {{!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs --}}
             {{#next_post}}
-                {{> "post-card"}}
+                <div class="post-card-default">
+                    {{!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs --}}
+                    {{> "post-card"}}
+                </div>
             {{/next_post}}
 
-            {{!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs --}}
             {{#prev_post}}
-                {{> "post-card"}}
+                <div class="post-card-default">
+                    {{!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs --}}
+                    {{> "post-card"}}
+                </div>
             {{/prev_post}}
         </div>
     </div>
